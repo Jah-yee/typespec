@@ -29,6 +29,11 @@ parameters:
     type: boolean
     default: true
 
+  - name: PublishToPublic
+    displayName: Publish to public (npmjs.org via ESRP)
+    type: boolean
+    default: false
+
 extends:
   template: /eng/common/pipelines/templates/1es-redirect.yml
 
@@ -38,7 +43,7 @@ extends:
         parameters:
           BuildPrereleaseVersion: true
           UseTypeSpecNext: false
-          Publish: ${{replace(replace('True',eq(variables['Build.SourceBranchName'], 'main'), 'public'),'True','internal')}}
+          Publish: ${{ replace(replace('True', or(eq(variables['Build.SourceBranchName'], 'main'), eq(parameters.PublishToPublic, true)), 'public'), 'True', 'internal') }}
           PublishDependsOnTest: ${{ parameters.RunTests }}
           PackagePath: /packages/http-client-csharp
           EmitterPackageJsonPath: packages/http-client-csharp/package.json

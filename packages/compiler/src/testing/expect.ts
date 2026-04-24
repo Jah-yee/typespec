@@ -64,7 +64,7 @@ export interface ExpectDiagnosticsOptions {
   /** When true (default), the number of diagnostics must match exactly. */
   strict?: boolean;
   /** When true, diagnostics are sorted before comparison so that order does not matter. */
-  fixedOrder?: boolean;
+  ignoreOrder?: boolean;
 }
 
 export function expectDiagnostics(
@@ -74,8 +74,8 @@ export function expectDiagnostics(
 ) {
   const array = isArray(match) ? match : [match];
 
-  // Sort both arrays if fixedOrder is requested so order doesn't matter
-  if (options.fixedOrder) {
+  // Sort both arrays if ignoreOrder is requested so order doesn't matter
+  if (options.ignoreOrder) {
     const sortKey = (d: { code: string; message: string; severity: string }) =>
       d.code + "|" + d.severity + "|" + d.message;
     const keyed = (d: { code?: string; message?: string; severity?: string }) => ({

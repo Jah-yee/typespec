@@ -4,4 +4,4 @@ packages:
   - "@typespec/http-client-java"
 ---
 
-fix(http-client-java): correct 'seperated' typo in ClientMethodTemplate javadoc
+fix(http-client-java): correct 'separated' typo in ClientMethodTemplate javadoc

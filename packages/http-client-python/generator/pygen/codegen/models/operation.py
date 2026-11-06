@@ -497,7 +497,7 @@ class OperationBase(  # pylint: disable=too-many-public-methods,too-many-instanc
 
     @property
     def success_status_codes(self) -> list[Union[int, str, list[int]]]:
-        """The list of all successfull status code."""
+        """The list of all successful status code."""
         return sorted([code for response in self.responses for code in response.status_codes])
 
     @property

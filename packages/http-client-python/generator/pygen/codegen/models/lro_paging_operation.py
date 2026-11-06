@@ -13,7 +13,7 @@ from .response import LROPagingResponse, Response
 class LROPagingOperation(LROOperationBase[LROPagingResponse], PagingOperationBase[LROPagingResponse]):
     @property
     def success_status_codes(self) -> list[Union[int, str, list[int]]]:
-        """The list of all successfull status code."""
+        """The list of all successful status code."""
         return [200]
 
     @property
